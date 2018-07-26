@@ -9,7 +9,7 @@ import {
 	Jumbotron
 } from 'reactstrap';
 import { connect } from 'react-redux'; // redux states binding
-import { weatherFetch } from '../actions/SearchActions'; // action creator
+import { weatherFetch } from '../actions/search_term'; // action creator
 import styled from 'styled-components';
 
 

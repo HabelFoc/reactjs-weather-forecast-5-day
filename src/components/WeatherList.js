@@ -29,15 +29,24 @@ class WeatherList extends Component{
 		if(this.props.weather_data !== []){
 		const city = weatherData.city.name;
 		const temps = weatherData.list.map(data => data.main.temp);
+		const humidities = weatherData.list.map(data => data.main.humidity);
+		const pressures = weatherData.list.map(data => data.main.pressure);
 
 		console.log(temps)
+		console.log(humidities)
+		console.log(pressures)
+
+		// javascript unit symbols
+		const celsius = '℃';
+		const humidity = '%';
+		const pressure = 'hPa';
 		
 			return(
 				<tr key={uuid()}>
 					<td>{city}</td>
-					<td>
-						<Chart temps={temps} color={'#C72028'} />
-					</td>
+					<td><Chart data={temps} color="orange" units={celsius}/></td>
+					<td><Chart data={humidities} color="green" units={humidity} /></td>
+					<td><Chart data={pressures} color="black" units={pressure} /></td>
 				</tr>
 			);
 		}else{
@@ -53,9 +62,9 @@ class WeatherList extends Component{
 						<StyledTableHead>
 							<tr>
 								<th>City</th>
-								<th>Temperature</th>
-								<th>Humidity</th>
-								<th>Pressure</th>
+								<th>Temperature &#8451; (Celsius)</th>
+								<th>Humidity (%)</th>
+								<th>Pressure (hPa)</th>
 							</tr>
 						</StyledTableHead>
 						<tbody>

@@ -1,16 +1,21 @@
 import React, { Fragment } from 'react';
-import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
+import _ from 'lodash';
+import { Sparklines, SparklinesLine, SparklinesReferenceLine, SparklinesSpots } from 'react-sparklines';
 
+// calculate average
+function average(data){
+	return _.round(_.sum(data)/data.length);
+}
 
-const Chart = ({ color, temps }) => {
+const Chart = ({ color, data, units }) => {
 	return(
 		<Fragment>
-			<span>100&#8451; (Celsius )</span>
-				<Sparklines data={temps} min={0.0} max={100.0} width={180} height={120}>
+				<Sparklines data={data} width={180} height={120}>
 					<SparklinesLine color={color} />
+					<SparklinesReferenceLine type="avg" />
 					<SparklinesSpots />
 				</Sparklines>
-			<span>0&#8451; (Celsius)</span>
+			<span>Average: {average(data)} {units}</span>
 		</Fragment>
 	);
 }
