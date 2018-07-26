@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import Chart from './Chart';
 import CountryCodeToCountryName from '../jsutilities/country_code_to_country_name';
 import GoogleMap from './GoogleMap';
-import '../styles/weatherlist.css';
 
 
 const StyledTableHead = styled.thead`

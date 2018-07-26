@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import _ from 'lodash';
 import { Sparklines, SparklinesLine, SparklinesReferenceLine, SparklinesSpots } from 'react-sparklines';
-import styled from 'styled-components';
 import '../styles/chart.css';
 
 
