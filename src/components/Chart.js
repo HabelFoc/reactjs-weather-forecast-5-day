@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react';
 import _ from 'lodash';
 import { Sparklines, SparklinesLine, SparklinesReferenceLine, SparklinesSpots } from 'react-sparklines';
+import styled from 'styled-components';
+import '../styles/chart.css';
+
 
 // calculate average
 function average(data){
 	return _.round(_.sum(data)/data.length);
 }
+
 
 const Chart = ({ color, data, units }) => {
 	return(

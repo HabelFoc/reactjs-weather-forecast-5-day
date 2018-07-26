@@ -6,12 +6,16 @@ import {
 } from 'reactstrap';
 import uuid from 'uuid';
 import styled from 'styled-components';
-
 import Chart from './Chart';
+import CountryCodeToCountryName from '../jsutilities/country_code_to_country_name';
+import GoogleMap from './GoogleMap';
+import '../styles/weatherlist.css';
+
 
 const StyledTableHead = styled.thead`
 	color: #3763B7 !important;
 `;
+
 
 class WeatherList extends Component{
 	constructor(props){
@@ -28,6 +32,7 @@ class WeatherList extends Component{
 	renderWeatherList(weatherData){
 		if(this.props.weather_data !== []){
 		const city = weatherData.city.name;
+		const countryCode = weatherData.city.country;
 		const temps = weatherData.list.map(data => data.main.temp);
 		const humidities = weatherData.list.map(data => data.main.humidity);
 		const pressures = weatherData.list.map(data => data.main.pressure);
@@ -40,10 +45,19 @@ class WeatherList extends Component{
 		const celsius = '℃';
 		const humidity = '%';
 		const pressure = 'hPa';
+
+		// grab map longitude and latitude
+		const { lon, lat } = weatherData.city.coord;
 		
 			return(
 				<tr key={uuid()}>
-					<td>{city}</td>
+					<td>
+					<GoogleMap 
+					lat={lat} 
+					lon={lon} 
+					city={city} 
+					/>
+					{city} ({CountryCodeToCountryName(countryCode)})</td>
 					<td><Chart data={temps} color="orange" units={celsius}/></td>
 					<td><Chart data={humidities} color="green" units={humidity} /></td>
 					<td><Chart data={pressures} color="black" units={pressure} /></td>
@@ -58,7 +72,7 @@ class WeatherList extends Component{
 		return(
 			<div>
 				<Container>
-					<Table striped style={{textAlign: 'center'}}>
+					<Table striped style={{textAlign: 'center', verticalAlign: 'middle'}}>
 						<StyledTableHead>
 							<tr>
 								<th>City</th>

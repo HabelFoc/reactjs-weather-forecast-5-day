@@ -9,7 +9,7 @@ export const weatherFetch = term => async dispatch => {
 	const city = term;
 	const apikey = weather_api;
 	const unit = 'metric';
-	const apiQuery = `http://api.openweathermap.org/data/2.5/forecast?q=${city},my&appid=${apikey}&units=${unit}`;
+	const apiQuery = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apikey}&units=${unit}`;
 
 	// start axios request
 	try{

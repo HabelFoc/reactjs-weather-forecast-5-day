@@ -1,3 +1,4 @@
 module.exports = {
-	weather_api: 'openweathermap.org_api_key'
+	weather_api: '<YOUR_API>',
+	google_api: '<YOUR_API>'
 }
